@@ -10,25 +10,23 @@ This AI-driven system helps HR departments, universities, and event organizers m
 
 ### It includes:
 - ✅ A **Submission Form** to collect candidate details  
-  ![Form Preview](app/images/form_preview.png)
+  ![Form Preview](app/images/img1.png)(app/images/img2.png)
 
 - 📊 An **Admin Panel** to view and rank all candidates  
-  ![Admin Panel](app/images/admin_preview.png)
+  ![Admin Panel](app/images/img3.png)
 
 - 🏆 A **Selection Interface** to display top applicants based on scores  
-  ![Selection Interface](app/images/accepted_preview.png)
+  ![Selection Interface](app/images/img4.png)
 
 ---
 
 ## 🎥 Demo Video
 
-[![Watch the Demo Video](https://img.youtube.com/vi/your_video_id_here/0.jpg)](https://www.youtube.com/watch?v=your_video_id_here)
+[![Watch the Demo Video](app/images/video.mp4)](app/images/video.mp4)
 
 ---
 
 ## 📦 Project Structure
-
-![Project Tree](app/images/project_tree.png)
 
 ```bash
 project_root/
