@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel – Hackathon Submissions</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            padding: 40px;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2d3748;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 18px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f7fafc;
+            color: #4a5568;
+        }
+
+        tr:hover {
+            background-color: #f0f4f8;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+        .accept-form {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .accept-form input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .accept-form button {
+            background-color: #38a169;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .accept-form button:hover {
+            background-color: #2f855a;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="/accept" method="post" class="accept-form">
+        <input type="number" id="num_participants" name="num_participants" min="1" required>
+        <button type="submit">Accept Top N Participants</button>
+    </form>
+
+    <div class="container">
+        <h1>🛠️ Admin Panel – Candidate Submissions</h1>
+
+        {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    {% for key in data[0].keys() %}
+                        <th>{{ key | replace("_", " ") | capitalize }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    {% for value in row.values() %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No submissions found yet.</p>
+        {% endif %}
+
+        <a href="/" class="back-btn">⬅ Back to Form</a>
+    </div>
+</body>
+</html>
+
+

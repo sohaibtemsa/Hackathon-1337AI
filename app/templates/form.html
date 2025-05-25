@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hackathon 2025 - Candidate Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .header .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        /* Gmail-specific styles integrate with existing `.form-group.has-icon` */
+        .form-group input[type="email"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            font-family: inherit;
+        }
+
+        .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group input[type="email"]:hover {
+            border-color: #cbd5e0;
+            background: white;
+        }
+
+        /* Reuse icon styles for ✉️ */
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+
+        .form-group.has-icon input[type="email"] {
+            padding-right: 50px;
+        }
+
+        /* Error style override (already present in your CSS but repeated here for completeness) */
+        .form-group input.error {
+            border-color: #e53e3e;
+            background-color: #fed7d7;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2d3748;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="url"],
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fafafa;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group input:hover,
+        .form-group textarea:hover {
+            border-color: #cbd5e0;
+            background: white;
+        }
+
+        .form-group .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0aec0;
+            pointer-events: none;
+            font-size: 1.2rem;
+        }
+
+        .form-group.has-icon input {
+            padding-right: 50px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            max-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .required {
+            color: #e53e3e;
+        }
+
+        .form-description {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .form-description h3 {
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-description p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tech-stack-hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px 15px;
+            }
+
+            .submit-btn {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loading.show {
+            display: flex;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Validation Styles */
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: #e53e3e;
+            background-color: #fed7d7;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .custom-file-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .file-name {
+            display: inline-block;
+            margin-left: 15px;
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="icon">1337AI 🤖</div>
+            <h1>AI Hackathon 2025</h1>
+            <p class="subtitle">Join the Future of Artificial Intelligence</p>
+        </div>
+
+        <div class="form-description">
+            <h3>🚀 Ready to showcase your AI skills?</h3>
+            <p>Fill out this form to apply for our exclusive AI hackathon. We're looking for talented developers, researchers, and innovators who are passionate about artificial intelligence and machine learning.</p>
+        </div>
+
+        <form action="/submit" method="POST" id="candidateForm" enctype="multipart/form-data" novalidate>
+            <!-- Email Address -->
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                <div class="error-message">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                <div class="error-message">Please enter your full name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="status">status <span class="required">*</span></label>
+                <input type="text" id="status" name="status" required placeholder="Enter your full name">
+                <div class="error-message">Please enter the status of your etude</div>
+            </div>
+
+            <div class="form-group file-upload">
+                <label for="attestation">Upload Attestation of Scholarity <span class="required">*</span></label>
+                <input type="file" id="attestation" name="attestation" required>
+                <label for="attestation" class="custom-file-label">📎 Choose File</label>
+                <span id="file-name" class="file-name">No file chosen</span>
+                <div class="error-message">Please upload your attestation</div>
+            </div>
+
+
+
+            <div class="form-group has-icon">
+                <label for="github">GitHub Profile URL <span class="required">*</span></label>
+                <input type="url" id="github" name="github" required placeholder="https://github.com/yourusername">
+                <span class="input-icon">🐙</span>
+                <div class="error-message">Please enter a valid GitHub URL</div>
+            </div>
+
+            <div class="form-group has-icon">
+                <label for="linkedin">LinkedIn Profile URL <span class="required">*</span></label>
+                <input type="url" id="linkedin" name="linkedin" required placeholder="https://linkedin.com/in/yourprofile">
+                <span class="input-icon">💼</span>
+                <div class="error-message">Please enter a valid LinkedIn URL</div>
+            </div>
+
+            <!-- Other AI Projects -->
+            <div class="form-group">
+                <label for="projects">AI Projects</label>
+                <textarea id="projects" name="projects" placeholder="Briefly list other AI-related projects you worked on..."></textarea>
+            </div>
+
+            <!-- Certifications -->
+            <div class="form-group">
+                <label for="certifs">Certifications</label>
+                <textarea id="certifs" name="certifs" placeholder="List any relevant AI or tech certifications..."></textarea>
+            </div>
+
+            <!-- Binary: Previous Participation -->
+            <div class="form-group">
+                <label>Have you participated in this hackathon before? <span class="required">*</span></label>
+                <div style="display: flex; gap: 20px; margin-top: 10px;">
+                    <label>
+                        <input type="radio" name="past_participation" value="yes" required>
+                        Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="past_participation" value="no">
+                        No
+                    </label>
+                </div>
+                <div class="error-message">Please select an option</div>
+            </div>
+
+            <div class="form-group">
+                <label for="ai_stack">AI Technology Stack <span class="required">*</span></label>
+                <textarea id="ai_stack" name="ai_stack" required placeholder="List your AI/ML technologies and frameworks..."></textarea>
+                <div class="error-message">Please describe your AI technology stack</div>
+            </div>
+
+            <div class="form-group">
+                <label for="project">Why do you want to participate in this hackathon? <span class="required">*</span></label>
+                <input type="text" id="project" name="project" required placeholder="Your main motivation and contributions...">
+                <div class="error-message">Please enter your project title</div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                🚀 Submit Application
+            </button>
+        </form>
+
+        <div class="form-footer">
+            <p>⚡ Applications are reviewed using AI-powered evaluation<br>
+            🏆 Top 20 candidates will be selected for the hackathon</p>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        document.getElementById('attestation').addEventListener('change', function () {
+            const fileNameSpan = document.getElementById('file-name');
+            const file = this.files[0];
+            fileNameSpan.textContent = file ? file.name : 'No file chosen';
+        });
+    </script>
+
+
+</body>
+</html>
