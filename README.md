@@ -10,7 +10,8 @@ This AI-driven system helps HR departments, universities, and event organizers m
 
 ### It includes:
 - ✅ A **Submission Form** to collect candidate details  
-  ![Form Preview](app/images/img1.png)(app/images/img2.png)
+  ![Form Preview](app/images/img1.png)
+  ![Form Preview](app/images/img2.png)
 
 - 📊 An **Admin Panel** to view and rank all candidates  
   ![Admin Panel](app/images/img3.png)
